@@ -26,6 +26,12 @@ df["score"] = (
 st.title("📍 Smart Nearby Places Recommender")
 
 user_mood = st.selectbox("Choose your mood", df["mood"].unique())
+st.sidebar.header("🔍 Filters")
+
+min_rating = st.sidebar.slider("Minimum Rating", 1.0, 5.0, 3.5)
+max_distance = st.sidebar.slider("Maximum Distance (km)", 0.5, 5.0, 3.0)
+max_price = st.sidebar.slider("Max Price Level", 1, 4, 3)
+
 
 results = df[df["mood"] == user_mood].sort_values("score", ascending=False)
 
